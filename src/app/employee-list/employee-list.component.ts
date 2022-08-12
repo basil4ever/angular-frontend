@@ -3,6 +3,8 @@ import {Employee} from "../employee";
 import {EmployeeService} from "../employee.service";
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../service/token-storage.service";
+import {MatDialog} from "@angular/material/dialog";
+import {CreateEmployeeComponent} from "../create-employee/create-employee.component";
 
 @Component({
   selector: 'app-employee-list',
@@ -22,7 +24,12 @@ export class EmployeeListComponent implements OnInit {
   employees: Employee[];
   constructor(private employeeService: EmployeeService,
               private tokenStorageService: TokenStorageService,
-              private router: Router) { }
+              private router: Router,
+              private dialogRef: MatDialog) { }
+
+  createEmployee(){
+    this.dialogRef.open(CreateEmployeeComponent, {data:{modal: this.dialogRef,grid: this}});
+  }
 
   ngOnInit(): void {
 

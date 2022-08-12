@@ -18,9 +18,14 @@
           <button (click)="updateEmployee(employee.id)" class="btn btn-info" *ngIf="showModeratorBoard">Update</button>
           <button (click)="deleteEmployee(employee.id)" class="btn btn-danger" *ngIf="showModeratorBoard" style="margin-left: 10px">Delete</button>
           <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-
         </td>
       </tr>
+      <button (click)="createEmployee()" class="btn btn-info" *ngIf="showModeratorBoard">Add Employee</button>
+
+<!--      <li class="nav-item" *ngIf="showModeratorBoard">-->
+<!--        <a routerLink="create-employee" routerLinkActive="active" class="nav-link">Add Employee</a>-->
+<!--      </li>-->
+
     </tbody>
   </table>
 

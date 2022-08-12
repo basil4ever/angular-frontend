@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Employee} from "../employee";
 import {EmployeeService} from "../employee.service";
 import {Router} from "@angular/router";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-employee',
@@ -12,25 +13,24 @@ export class CreateEmployeeComponent implements OnInit {
 
   employee: Employee = new Employee();
   constructor(private employeeService: EmployeeService,
-              private router: Router) { }
+              private router: Router,@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
   saveEmployee(){
     this.employeeService.createEmployee(this.employee).subscribe(data => {
       console.log(data);
-      this.goToEmployeeList();
+      this.data.grid.getEmployees();
+      this.data.modal.closeAll();
     },
       error => console.log(error));
   }
 
-  goToEmployeeList(){
-    void this.router.navigate(['/employees']);
-  }
 
   onSubmit() {
     this.saveEmployee();
-   }
+  }
 
 }

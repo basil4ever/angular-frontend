@@ -12,6 +12,8 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { HomeComponent } from './home/home.component';
 import {AuthModule} from "./auth/auth.module";
 import {authInterceptorProviders} from "./auth/helpers/auth.interceptor";
+import {MatDialogModule} from "@angular/material/dialog";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {authInterceptorProviders} from "./auth/helpers/auth.interceptor";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    AuthModule
+    AuthModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

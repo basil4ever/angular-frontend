@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
 
   <ul class="navbar-nav mr-auto" routerLinkActive="active">
+
     <li class="nav-item">
       <a href="/home" class="nav-link" routerLink="home">Home </a>
     </li>
@@ -24,6 +25,17 @@
     </li>
   </ul>
 
+
+
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="employees" *ngIf="isLoggedIn" routerLinkActive="active" class="nav-link">Employee List</a>
+    </li>
+<!--    <li class="nav-item" *ngIf="showModeratorBoard">-->
+<!--      <a routerLink="create-employee" routerLinkActive="active" class="nav-link">Add Employee</a>-->
+<!--    </li>-->
+  </ul>
+
   <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
     <li class="nav-item">
       <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
@@ -33,14 +45,6 @@
     </li>
   </ul>
 
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a routerLink="employees" *ngIf="isLoggedIn" routerLinkActive="active" class="nav-link">Employee List</a>
-    </li>
-    <li class="nav-item" *ngIf="showModeratorBoard">
-      <a routerLink="create-employee" routerLinkActive="active" class="nav-link">Add Employee</a>
-    </li>
-  </ul>
 </nav>
 
 <div class="container">
