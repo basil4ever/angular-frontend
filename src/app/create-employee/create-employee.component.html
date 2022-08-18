@@ -13,10 +13,15 @@
            [(ngModel)]="employee.lastName" name="lastName">
   </div>
   <div class="form-group">
-    <label>Email Id</label>
+    <label>Email</label>
     <input type="text" class="form-control" id="emailId"
            [(ngModel)]="employee.emailId" name="emailId">
   </div>
+
+  <div class="alert alert-warning" *ngIf="addEmployeeError">
+    Email mast be unique!
+  </div>
+
   <button class="btn btn-success" type="submit">Submit</button>
 </form>
 </div>
