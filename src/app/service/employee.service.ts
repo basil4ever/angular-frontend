@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Employee} from "./employee";
+import {Employee} from "../employee";
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,6 @@ export class EmployeeService {
   deleteEmployee(id: number): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+
 
 }

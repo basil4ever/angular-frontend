@@ -1,5 +1,28 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
-</div>
+<h2> Users List</h2>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th> User Name</th>
+    <th> Email</th>
+    <th> Role</th>
+    <th> Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{user.username}}</td>
+    <td>{{user.email}}</td>
+    <td>
+      <span *ngFor="let role of user.roles" [style.color]="getRoleName(role.name).color">
+        {{ getRoleName(role.name).text }}
+      </span>
+    </td>
+
+    <td *ngIf="user.id!=currentAuthUser.id">
+      <button (click)="updateUser(user.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+      <button (click)="deleteUser(user.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

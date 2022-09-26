@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule} from "@angular/forms";
+import { UpdateUserComponent } from './update-user/update-user.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -17,11 +20,14 @@ import {FormsModule} from "@angular/forms";
     BoardUserComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    UpdateUserComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatSelectModule,
+        MatInputModule
+    ]
 })
 export class AuthModule { }

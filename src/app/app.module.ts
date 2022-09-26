@@ -14,6 +14,7 @@ import {AuthModule} from "./auth/auth.module";
 import {authInterceptorProviders} from "./auth/helpers/auth.interceptor";
 import {MatDialogModule} from "@angular/material/dialog";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {LightgalleryModule} from "lightgallery/angular";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     FormsModule,
     AuthModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    LightgalleryModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

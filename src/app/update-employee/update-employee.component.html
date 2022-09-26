@@ -1,6 +1,6 @@
 <div class="col-md-6 offset-md-3">
   <h3>Update Employee</h3>
-  <form (ngSubmit) = "onSubmit()">
+  <form (ngSubmit)="onSubmit()">
 
     <div class="form-group">
       <label>First Name</label>
@@ -17,6 +17,36 @@
       <input type="text" class="form-control" id="emailId"
              [(ngModel)]="employee.emailId" name="emailId">
     </div>
+
+    <div class="panel-body">
+      <strong>Select files from your computer</strong>
+      <div *ngIf="fileStatus.status==='progress'">
+        <div class="progress">
+          <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info"
+               role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            {{ fileStatus.requestType }} {{ fileStatus.percent }}
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <form enctype="multipart/form-data">
+        <fieldset>
+          <div class="form-group">
+            <div>
+              <input type="file" (change)="onUploadFiles($event)" name="files" multiple class="form-control"/>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="col" *ngFor="let img of imagesPreview">
+        <img class="responsive-img h200" *ngIf="img" [src]="img">
+      </div>
+
+    </div>
+
+
     <button class="btn btn-success" type="submit">Submit</button>
   </form>
 </div>

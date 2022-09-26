@@ -7,5 +7,7 @@ export class Employee {
   lastName: string;
   // @ts-ignore
   emailId: string;
+  // TODO: Add File model
+  files: any;
 }
 

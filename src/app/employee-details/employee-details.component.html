@@ -10,3 +10,10 @@
     <label> <b>Email</b> </label> {{employee.emailId}}
   </div>
 </div>
+<div>
+  <div class="col" *ngFor="let img of employeePhotos">
+    <lightgallery [onBeforeSlide]="onBeforeSlide">
+    <img class="responsive-img" *ngIf="img" [src]="img">
+    </lightgallery>
+  </div>
+</div>
