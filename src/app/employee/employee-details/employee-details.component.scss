@@ -1,0 +1,14 @@
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.4/css/lightgallery.css');
+.responsive-img {
+  height: 200px;
+}
+.employee-details {
+  display: flex;
+  justify-content: space-between;
+}
+.employee-details-form {
+  flex-direction: column;
+}
+.employee-details-photos {
+  flex-direction: column;
+}

@@ -12,11 +12,8 @@ import {Role} from "../../models/role";
 })
 export class UpdateUserComponent implements OnInit {
 
-  // @ts-ignore
   id: number;
-  // @ts-ignore
   user: User;
-  // @ts-ignore
   roles: Role[];
 
 

@@ -9,6 +9,7 @@
         <th> Actions</th>
       </tr>
     </thead>
+
     <tbody>
       <tr *ngFor="let employee of employees">
         <td>{{employee.firstName}}</td>
@@ -21,11 +22,6 @@
         </td>
       </tr>
       <button (click)="createEmployee()" class="btn btn-info" *ngIf="showModeratorBoard">Add Employee</button>
-
-<!--      <li class="nav-item" *ngIf="showModeratorBoard">-->
-<!--        <a routerLink="create-employee" routerLinkActive="active" class="nav-link">Add Employee</a>-->
-<!--      </li>-->
-
     </tbody>
   </table>
 

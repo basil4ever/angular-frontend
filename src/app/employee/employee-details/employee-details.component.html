@@ -1,0 +1,25 @@
+<h3>View Employee Details</h3>
+
+<div class="employee-details">
+  <div class="employee-details-form">
+    <div>
+      <label> <b>First Name</b> </label> {{employee.firstName}}
+    </div>
+    <div>
+      <label> <b>Last Name</b> </label> {{employee.lastName}}
+    </div>
+    <div>
+      <label> <b>Email</b> </label> {{employee.emailId}}
+    </div>
+  </div>
+  <div class="employee-details-photos">
+    <div class="col" *ngFor="let img of employeePhotos">
+      <lightgallery [onBeforeSlide]="onBeforeSlide">
+        <img class="responsive-img" *ngIf="img" [src]="img">
+      </lightgallery>
+    </div>
+  </div>
+</div>
+<div>
+<button class="btn btn-success" (click)="goToEmployeeList()">Back to Employee List</button>
+</div>

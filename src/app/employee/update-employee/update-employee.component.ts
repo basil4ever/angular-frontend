@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployeeService} from "../service/employee.service";
-import {Employee} from "../employee";
+import {EmployeeService} from "../../service/employee.service";
+import {Employee} from "../../employee";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FileService} from "../service/file.service";
+import {FileService} from "../../service/file.service";
 import {HttpErrorResponse, HttpEvent, HttpEventType} from "@angular/common/http";
 import { saveAs } from 'file-saver';
 

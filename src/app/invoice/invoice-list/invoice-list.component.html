@@ -1,0 +1,42 @@
+<h2>Invoice List</h2>
+<button (click)="createInvoice()" class="btn btn-info" *ngIf="showModeratorBoard">Add Invoice</button>
+
+<canvas baseChart
+        [type]="'pie'"
+        [data]="data"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend">
+</canvas>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>№</th>
+    <th>Employee</th>
+    <th>Amount</th>
+    <th>Created</th>
+    <th>Invoice Data</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let invoice of invoices">
+    <td>{{invoice.id}}</td>
+    <td>{{invoice.employee.firstName+' '+invoice.employee.lastName}}</td>
+    <td>{{invoice.amount+' '+invoice.currency}}</td>
+    <td>{{formatDate(invoice.created)}}</td>
+    <td>{{formatData(invoice.invoiceData)}}</td>
+    <td>{{invoice.description}}</td>
+    <td>
+      <button (click)="updateInvoice(invoice.id)" class="btn btn-info" *ngIf="showModeratorBoard">Update</button>
+      <button (click)="deleteInvoice(invoice.id)" class="btn btn-danger" *ngIf="showModeratorBoard"
+              style="margin-left: 10px">Delete
+      </button>
+      <button (click)="invoiceDetails(invoice.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

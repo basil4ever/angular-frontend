@@ -6,14 +6,37 @@
     <th> User Name</th>
     <th> Email</th>
     <th> Role</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td *ngIf="user.id==currentAuthUser.id">{{user.username}}</td>
+    <td *ngIf="user.id==currentAuthUser.id">{{user.email}}</td>
+    <td *ngIf="user.id==currentAuthUser.id">
+      <span *ngFor="let role of user.roles" [style.color]="getRoleName(role.name).color">
+        {{ getRoleName(role.name).text }}
+      </span>
+    </td>
+
+
+  </tr>
+  </tbody>
+</table>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th> User Name</th>
+    <th> Email</th>
+    <th> Role</th>
     <th> Actions</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let user of users">
-    <td>{{user.username}}</td>
-    <td>{{user.email}}</td>
-    <td>
+    <td *ngIf="user.id!=currentAuthUser.id">{{user.username}}</td>
+    <td *ngIf="user.id!=currentAuthUser.id">{{user.email}}</td>
+    <td *ngIf="user.id!=currentAuthUser.id">
       <span *ngFor="let role of user.roles" [style.color]="getRoleName(role.name).color">
         {{ getRoleName(role.name).text }}
       </span>

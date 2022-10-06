@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Employee} from "../employee";
-import {EmployeeService} from "../service/employee.service";
+import {Employee} from "../../employee";
+import {EmployeeService} from "../../service/employee.service";
 import {Router} from "@angular/router";
-import {TokenStorageService} from "../service/token-storage.service";
+import {TokenStorageService} from "../../service/token-storage.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateEmployeeComponent} from "../create-employee/create-employee.component";
 
@@ -17,11 +17,9 @@ export class EmployeeListComponent implements OnInit {
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
-  // @ts-ignore
-  username: string;
+  username: string = '';
 
-  // @ts-ignore
-  employees: Employee[];
+  employees: Employee[] = [];
   constructor(private employeeService: EmployeeService,
               private tokenStorageService: TokenStorageService,
               private router: Router,
@@ -39,7 +37,6 @@ export class EmployeeListComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;

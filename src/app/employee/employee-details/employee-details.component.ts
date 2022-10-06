@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Employee} from "../employee";
-import {ActivatedRoute} from "@angular/router";
-import {EmployeeService} from "../service/employee.service";
+import {Employee} from "../../employee";
+import {ActivatedRoute, Router} from "@angular/router";
+import {EmployeeService} from "../../service/employee.service";
 import {Observable, switchMap} from "rxjs";
-import {FileService} from "../service/file.service";
+import {FileService} from "../../service/file.service";
 import {BeforeSlideDetail} from 'lightgallery/lg-events';
-
 
 
 @Component({
@@ -22,7 +21,13 @@ export class EmployeeDetailsComponent implements OnInit {
   employee: Employee;
   employeePhotos: any[] = [];
 
-  constructor(private route: ActivatedRoute, private employeeService: EmployeeService, private fileService: FileService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private employeeService: EmployeeService,
+    private fileService: FileService,
+    private router: Router
+  ) {
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -35,10 +40,10 @@ export class EmployeeDetailsComponent implements OnInit {
         // this.employeePhotos.push(fileFromBE)
         this.fileService.getImageByEmployeeId(img.id)
           .pipe(switchMap((blob) => this.convertBlobToBase64(blob)))
-          .subscribe( base64ImageUrl => {
+          .subscribe(base64ImageUrl => {
 
             this.employeePhotos.push(base64ImageUrl);
-        });
+          });
         console.log(this.employeePhotos);
       });
     });
@@ -62,8 +67,12 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   onBeforeSlide = (detail: BeforeSlideDetail): void => {
-    const { index, prevIndex } = detail;
+    const {index, prevIndex} = detail;
     console.log(index, prevIndex);
   };
+
+  goToEmployeeList() {
+    void this.router.navigate(['/employees']);
+  }
 
 }

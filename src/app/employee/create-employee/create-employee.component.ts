@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Employee} from "../employee";
-import {EmployeeService} from "../service/employee.service";
+import {Employee} from "../../employee";
+import {EmployeeService} from "../../service/employee.service";
 import {Router} from "@angular/router";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 

@@ -1,13 +1,8 @@
 export class Employee {
-  // @ts-ignore
-  id: number;
-  // @ts-ignore
+  id?: number;
   firstName: string;
-  // @ts-ignore
   lastName: string;
-  // @ts-ignore
   emailId: string;
-  // TODO: Add File model
-  files: any;
+  files?: any;
 }
 

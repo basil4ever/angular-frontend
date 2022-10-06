@@ -42,7 +42,7 @@ export class UserService {
   }
 
   getUserBiId(id: number): Observable<User>{
-    return this.httpClient.get<User>(`${this.baseURL}/${id}`)
+    return this.httpClient.get<User>(`${this.baseURL}/${id}`);
   }
 
 }
