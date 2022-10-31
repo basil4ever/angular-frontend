@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Invoice} from "../models/invoice";
+import {InvoiceReportDTO} from "../dto/InvoiceReportDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,9 @@ export class InvoiceService {
 
   deleteInvoice(id: number): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
+
+  getDataForPieChart(): Observable<InvoiceReportDTO[]>{
+    return this.httpClient.get<InvoiceReportDTO[]>(`${this.baseURL}/pie-chart-data`)
   }
 }

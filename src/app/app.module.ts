@@ -17,6 +17,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {LightgalleryModule} from "lightgallery/angular";
 import {InvoiceModule} from "./invoice/invoice.module";
 import { NgChartsModule } from 'ng2-charts';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { NgChartsModule } from 'ng2-charts';
     BrowserAnimationsModule,
     MatDialogModule,
     LightgalleryModule,
-    NgChartsModule
+    NgChartsModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

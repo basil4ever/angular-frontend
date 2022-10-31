@@ -1,42 +1,89 @@
 <h2>Invoice List</h2>
 <button (click)="createInvoice()" class="btn btn-info" *ngIf="showModeratorBoard">Add Invoice</button>
+<div class="invoice-list">
 
-<canvas baseChart
-        [type]="'pie'"
-        [data]="data"
-        [options]="pieChartOptions"
-        [plugins]="pieChartPlugins"
-        [legend]="pieChartLegend">
-</canvas>
+  <div class="invoice-table">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>№</th>
-    <th>Employee</th>
-    <th>Amount</th>
-    <th>Created</th>
-    <th>Invoice Data</th>
-    <th>Description</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
+      <ng-container matColumnDef="employee">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Employee"> Employee</th>
+        <td mat-cell *matCellDef="let row"> {{row.employee.firstName + ' ' + row.employee.lastName}} </td>
+      </ng-container>
 
-  <tbody>
-  <tr *ngFor="let invoice of invoices">
-    <td>{{invoice.id}}</td>
-    <td>{{invoice.employee.firstName+' '+invoice.employee.lastName}}</td>
-    <td>{{invoice.amount+' '+invoice.currency}}</td>
-    <td>{{formatDate(invoice.created)}}</td>
-    <td>{{formatData(invoice.invoiceData)}}</td>
-    <td>{{invoice.description}}</td>
-    <td>
-      <button (click)="updateInvoice(invoice.id)" class="btn btn-info" *ngIf="showModeratorBoard">Update</button>
-      <button (click)="deleteInvoice(invoice.id)" class="btn btn-danger" *ngIf="showModeratorBoard"
-              style="margin-left: 10px">Delete
-      </button>
-      <button (click)="invoiceDetails(invoice.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Amount"> Amount</th>
+        <td mat-cell *matCellDef="let row"> {{row.amount + ' ' + row.currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Data Created"> Created</th>
+        <td mat-cell *matCellDef="let row"> {{formatDate(row.created)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="invoice_data">
+        <th mat-header-cell *matHeaderCellDef> Invoice Data</th>
+        <td mat-cell *matCellDef="let row"> {{formatData(row.invoiceData)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description</th>
+        <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions</th>
+        <td mat-cell *matCellDef="let row">
+          <button (click)="updateInvoice(row.id)" class="btn btn-info" *ngIf="showModeratorBoard">Update</button>
+          <button (click)="deleteInvoice(row.id)" class="btn btn-danger" *ngIf="showModeratorBoard"
+                  style="margin-left: 10px">Delete
+          </button>
+          <button (click)="invoiceDetails(row.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+        </td>
+      </ng-container>
+
+      <!--  <thead>
+        <tr>
+          <th>Employee</th>
+          <th>Amount</th>
+          <th>Created</th>
+          <th>Invoice Data</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let invoice of invoices">
+          <td>{{invoice.employee.firstName+' '+invoice.employee.lastName}}</td>
+          <td>{{invoice.amount+' '+invoice.currency}}</td>
+          <td>{{formatDate(invoice.created)}}</td>
+          <td>{{formatData(invoice.invoiceData)}}</td>
+          <td>{{invoice.description}}</td>
+          <td>
+            <button (click)="updateInvoice(invoice.id)" class="btn btn-info" *ngIf="showModeratorBoard">Update</button>
+            <button (click)="deleteInvoice(invoice.id)" class="btn btn-danger" *ngIf="showModeratorBoard"
+                    style="margin-left: 10px">Delete
+            </button>
+            <button (click)="invoiceDetails(invoice.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          </td>
+        </tr>
+        </tbody>-->
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5]"
+                   aria-label="Select page">
+    </mat-paginator>
+  </div>
+  <div class="invoice-pie">
+    <canvas baseChart
+            [type]="'pie'"
+            [data]="chartData"
+            [options]="pieChartOptions"
+            [plugins]="pieChartPlugins"
+            [legend]="pieChartLegend">
+    </canvas>
+  </div>
+</div>

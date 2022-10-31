@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+}
+
+.invoice-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice-pie {
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.invoice-table {
+  flex-direction: column;
+  min-width: 950px;
+}
